@@ -1,0 +1,60 @@
+{
+  "version": 1,
+
+  "agent": {
+    "name": "Useful Assistant",
+    "description": "A personal AI assistant that's actually helpful. Reads files, searches the web, manages memory, and gets things done without asking unnecessary questions.",
+    "vibe": "resourceful, opinionated, gets things done",
+    "emoji": "🧠"
+  },
+
+  "template": {
+    "slug": "useful-assistant",
+    "category": "general",
+    "tags": ["assistant", "personal", "productivity", "general"],
+    "partnerName": "Pinata"
+  },
+
+  "_docs": {
+    "_about": "This section documents all available manifest.json options. Remove this _docs block before submitting.",
+
+    "version": "Required. Always 1.",
+
+    "agent.name": "Display name for the agent (max 100 chars).",
+    "agent.description": "Agent personality or purpose (max 10,000 chars). Shown in the dashboard.",
+    "agent.vibe": "Short tagline (max 200 chars). Shown under the agent name.",
+    "agent.emoji": "Emoji icon for the agent (max 32 chars).",
+
+    "template.slug": "URL-friendly identifier (lowercase, hyphens only). Used in marketplace URLs.",
+    "template.category": "Template category (e.g. general, defi, content, social, devops).",
+    "template.tags": "Search tags, max 10. Help users discover your template.",
+    "template.partnerName": "Author or organization name.",
+    "template.partnerUrl": "Optional. Author website URL.",
+    "template.partnerLogoUrl": "Optional. Author logo URL.",
+
+    "model.primary": "Optional. Default model ID (e.g. 'anthropic/claude-sonnet-4-6'). If omitted, uses platform default.",
+
+    "secrets": "Array of secrets the agent needs. Values are stored encrypted, never in the manifest. Each secret has: name (env var name), description (human-readable), required (boolean, default true).",
+
+    "skills": "Array of skills to attach. Each has: cid (IPFS content ID), name (optional, human-readable). Max 20.",
+
+    "tasks": "Cron tasks that run on a schedule. Each has: name, prompt (sent to agent), schedule (cron expression), enabled (boolean). Max 20. Example schedule: '0 9 * * *' = 9am daily.",
+
+    "routes": "Port forwarding rules. Each has: port (1025-65535), path (URL prefix like '/app'), protected (boolean, default true = requires auth). Max 10.",
+
+    "channels.telegram.enabled": "Enable Telegram channel.",
+    "channels.telegram.dmPolicy": "'pairing' (requires pairing code), 'open' (anyone can DM), or 'closed' (no DMs).",
+    "channels.telegram.allowFrom": "Array of Telegram user IDs allowed to message.",
+    "channels.discord.enabled": "Enable Discord channel.",
+    "channels.discord.dmPolicy": "'pairing', 'open', or 'closed'.",
+    "channels.slack.enabled": "Enable Slack channel."
+  },
+
+  "secrets": [
+    {
+      "name": "ANTHROPIC_API_KEY",
+      "description": "Anthropic API key for Claude models",
+      "required": true
+    }
+  ]
+}
