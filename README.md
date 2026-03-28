@@ -44,6 +44,79 @@ The `manifest.json` includes a `_docs` block documenting every available field. 
 
 Remove the `_docs` block before submitting to the marketplace.
 
+## What's Included in the Manifest
+
+The template manifest works out of the box with these sections:
+
+```json
+{
+  "version": 1,
+  "agent": { "name": "...", "description": "...", "vibe": "...", "emoji": "..." },
+  "template": { "slug": "...", "category": "...", "partnerName": "...", "tags": [...] },
+  "model": { "primary": "anthropic/claude-sonnet-4-6" },
+  "secrets": [{ "name": "ANTHROPIC_API_KEY", "description": "...", "required": true }],
+  "tasks": [{ "name": "daily-check", "prompt": "...", "schedule": "0 9 * * *", "enabled": true }]
+}
+```
+
+### Field Details
+
+**`model`** — Set the AI model your agent uses. If omitted, the platform default is used.
+
+```json
+"model": { "primary": "anthropic/claude-sonnet-4-6" }
+```
+
+**`secrets`** — Declare API keys or credentials your agent needs. Values are stored encrypted and injected as environment variables at runtime — never put actual secret values in the manifest.
+
+```json
+"secrets": [
+  { "name": "COINGECKO_API_KEY", "description": "API key from coingecko.com/api", "required": true },
+  { "name": "SLACK_WEBHOOK", "description": "Slack incoming webhook URL", "required": false }
+]
+```
+
+**`tasks`** — Schedule prompts sent to your agent on a cron schedule. Max 20.
+
+```json
+"tasks": [
+  { "name": "daily-report", "prompt": "Generate report", "schedule": "0 9 * * *", "enabled": true },
+  { "name": "price-check", "prompt": "Check BTC and ETH prices", "schedule": "*/30 * * * *", "enabled": true }
+]
+```
+
+Common cron patterns:
+- `0 9 * * *` — daily at 9am
+- `*/30 * * * *` — every 30 minutes
+- `0 */6 * * *` — every 6 hours
+- `0 9 * * 1` — every Monday at 9am
+
+## Optional Sections (Add When You Need Them)
+
+These sections require additional setup (app code, valid CIDs, or platform accounts) — don't add them until you have the backing infrastructure.
+
+**`skills`** — Attach skill packages from ClawHub. Max 20. Each skill is referenced by its IPFS content ID.
+
+```json
+"skills": [
+  { "cid": "bafkrei...", "name": "web-search" },
+  { "cid": "bafkrei...", "name": "code-interpreter" }
+]
+```
+
+**`channels`** — Connect your agent to messaging platforms. Each channel supports a `dmPolicy`:
+- `"pairing"` — users must enter a pairing code to start a conversation
+- `"open"` — anyone can message the agent
+- `"closed"` — DMs disabled
+
+```json
+"channels": {
+  "telegram": { "enabled": true, "dmPolicy": "pairing", "allowFrom": [123456789] },
+  "discord": { "enabled": true, "dmPolicy": "open" },
+  "slack": { "enabled": true }
+}
+```
+
 ## Serving a Web App (Scripts + Routes)
 
 If your agent runs a server, API, or frontend dev server, you need two things in `manifest.json`:

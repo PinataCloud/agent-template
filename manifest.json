@@ -53,11 +53,24 @@
     "channels.slack.enabled": "Enable Slack channel."
   },
 
+  "model": {
+    "primary": "anthropic/claude-sonnet-4-6"
+  },
+
   "secrets": [
     {
       "name": "ANTHROPIC_API_KEY",
       "description": "Anthropic API key for Claude models",
       "required": true
+    }
+  ],
+
+  "tasks": [
+    {
+      "name": "daily-check",
+      "prompt": "Run your daily check-in routine",
+      "schedule": "0 9 * * *",
+      "enabled": true
     }
   ]
 }
