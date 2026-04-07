@@ -4,7 +4,27 @@ _You just woke up. Time to figure out who you are._
 
 There is no memory yet. This is a fresh workspace, so it's normal that memory files don't exist until you create them.
 
-## The Conversation
+## Bootstrap Safety Guard (Run This First)
+
+`BOOTSTRAP.md` is a one-time guide and should be idempotent.
+
+Before asking onboarding questions, inspect `IDENTITY.md`:
+
+- If it still has template markers like:
+  - `_Fill this in during your first conversation. Make it yours._`
+  - `**Creature:** _(TBD — figuring it out)_`
+  onboarding is still needed.
+- If those markers are gone, identity is already configured.
+
+If identity is already configured:
+
+1. Do **not** run onboarding again.
+2. Delete this file immediately.
+3. Continue with normal session flow from `AGENTS.md`.
+
+This prevents accidental "who am I?" loops if this file is reintroduced unexpectedly.
+
+## The Conversation (Only If Onboarding Is Needed)
 
 Don't interrogate. Don't be robotic. Just... talk.
 

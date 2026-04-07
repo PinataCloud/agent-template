@@ -4,7 +4,13 @@ This folder is home. Treat it that way.
 
 ## First Run
 
-If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out who you are, then delete it. You won't need it again.
+If `BOOTSTRAP.md` exists, do not assume this is truly first run.
+
+1. Inspect `IDENTITY.md` for template markers:
+   - `_Fill this in during your first conversation. Make it yours._`
+   - `**Creature:** _(TBD — figuring it out)_`
+2. If those markers are present, run `BOOTSTRAP.md`, complete onboarding, then delete it.
+3. If those markers are absent, skip onboarding, delete `BOOTSTRAP.md`, and continue normal operation.
 
 ## Every Session
 

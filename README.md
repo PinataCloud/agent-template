@@ -17,7 +17,7 @@ A vanilla starting point for building agents on [Pinata Agents](https://agents.p
 ```
 manifest.json                # Agent config — all available options documented in _docs
 workspace/
-  BOOTSTRAP.md               # First-run conversation guide (self-deletes after setup)
+  BOOTSTRAP.md               # First-run guide (self-deletes; skips if identity already configured)
   SOUL.md                    # Agent personality and principles — customize this
   AGENTS.md                  # Workspace conventions, memory system, safety rules
   IDENTITY.md                # Agent name, vibe, emoji (filled in during bootstrap)
@@ -25,6 +25,15 @@ workspace/
   TOOLS.md                   # Environment-specific notes
   HEARTBEAT.md               # Periodic tasks (empty by default)
 ```
+
+## Bootstrap Idempotency
+
+The template treats bootstrap as one-time setup:
+
+- `BOOTSTRAP.md` should run only when `IDENTITY.md` still contains template placeholders.
+- If identity is already configured, bootstrap should be skipped and `BOOTSTRAP.md` should be deleted.
+
+This keeps startup behavior stable even if `BOOTSTRAP.md` is reintroduced unexpectedly.
 
 ## Manifest Options
 
