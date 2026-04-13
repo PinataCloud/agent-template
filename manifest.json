@@ -37,7 +37,7 @@
 
     "secrets": "Array of secrets the agent needs. Values are stored encrypted, never in the manifest. Each secret has: name (env var name), description (human-readable), required (boolean, default true).",
 
-    "skills": "Array of skills to attach. Each has: cid (IPFS content ID), name (optional, human-readable). Max 20.",
+    "skills": "Array of skills to attach. Each has: either a cid or clawhub_slug, name (optional, human-readable). Max 20.",
 
     "tasks": "Cron tasks that run on a schedule. Each has: name, prompt (sent to agent), schedule (cron expression), enabled (boolean). Max 20. Example schedule: '0 9 * * *' = 9am daily.",
 
