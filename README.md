@@ -95,7 +95,7 @@ Common cron patterns:
 
 These sections require additional setup (app code, valid CIDs, or platform accounts) — don't add them until you have the backing infrastructure.
 
-**`skills`** — Attach skill packages from ClawHub. Max 20. Each skill is referenced by its IPFS content ID.
+**`skills`** — Attach skill packages from ClawHub. Max 20. Each skill is referenced either by a clawhub_slug or by its IPFS content ID.
 
 ```json
 "skills": [
