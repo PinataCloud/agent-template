@@ -99,7 +99,7 @@ These sections require additional setup (app code, valid CIDs, or platform accou
 
 ```json
 "skills": [
-  { "cid": "bafkrei...", "name": "web-search" },
+  { "clawhub_slug": "slack", "name": "Slack" },
   { "cid": "bafkrei...", "name": "code-interpreter" }
 ]
 ```
